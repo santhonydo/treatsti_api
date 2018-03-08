@@ -5,7 +5,7 @@ from common.firebase import firebase
 from bson import ObjectId
 from django.http import JsonResponse
 
-Users = db.child("users")
+Users = firebase.database().child("users")
 
 def create_user(req):
 	new_user = req.data
