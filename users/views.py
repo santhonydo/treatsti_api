@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from common.firebase import firebase
 from bson import ObjectId
 from django.http import JsonResponse
-
+from .form import DiagnosisForm
 Users = firebase.database().child("users")
 
 def create_user(req):
@@ -29,3 +29,18 @@ def index(request):
 		handlers(request)
 	else: 
 		return HttpResponse(status=404)
+
+diagnosis_handlers = {
+	'POST': save_diagnosis,
+}
+
+def save_diagnosis(req):
+	user = User
+	return HttpResponse(status=200)
+
+def diagnosis(request):
+	handler = diagnosis_handlers[request.method]
+	if handler:
+		return handlers(request)
+
+	return render(request, 'diagnosis.html', {'form': DiagnosisForm()})
