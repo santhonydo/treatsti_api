@@ -29,7 +29,7 @@ handlers = {
 def index(request):
 	handler = handlers[request.method]
 	if handler:
-		handlers(request)
+		return handler(request)
 	else: 
 		return HttpResponse(status=404)
 
@@ -45,7 +45,7 @@ diagnosis_handlers = {
 def diagnosis(request):
 	handler = diagnosis_handlers[request.method]
 	if handler:
-		return handlers(request)
+		return handler(request)
 
 	return render(request, 'diagnosis.html', {'form': DiagnosisForm()})
 

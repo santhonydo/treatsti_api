@@ -22,6 +22,8 @@ def create_charge(req):
 	except: 
 		return HttpResponse(status=400)
 
+	return HttpResponse(status=400)
+
 
 handlers = {
 	'POST': create_charge
@@ -31,7 +33,7 @@ handlers = {
 def index(request):
 	handler = handlers[request.method]
 	if handler:
-		handlers(request)
+		return handler(request)
 	else: 
 		return HttpResponse(status=404)
 
