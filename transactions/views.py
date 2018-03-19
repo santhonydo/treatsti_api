@@ -5,7 +5,9 @@ from common.sendgrid_api import send_mail
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 
-stripe.api_key = "sk_live_G0h2V0jwMQhp3SYNlpyX61A3"
+# stripe.api_key = "sk_live_G0h2V0jwMQhp3SYNlpyX61A3"
+stripe.api_key = "sk_test_gNQIsH7UWOchs63rkKfIPmxm"
+
 
 def create_charge(req):
 	try:
