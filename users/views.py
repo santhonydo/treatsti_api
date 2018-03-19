@@ -6,6 +6,7 @@ from common.firebase import firebase
 from bson import ObjectId
 from django.http import JsonResponse
 from .form import DiagnosisForm
+from django.views.decorators.csrf import csrf_exempt
 
 Users = firebase.database().child("users")
 def create_user(req):
@@ -24,6 +25,7 @@ handlers = {
 	'GET': get_user
 }
 
+@csrf_exempt
 def index(request):
 	handler = handlers[request.method]
 	if handler:
