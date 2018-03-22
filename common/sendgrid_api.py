@@ -1,8 +1,6 @@
 import sendgrid
 import os
-print sendgrid
-print sendgrid.SendGridAPIClient
-sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('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'))
+sg = sendgrid.SendGridAPIClient(apikey='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')
 
 def send_mail (from_email_str, to_email_str, subject=None, message=None, html=None, cc=None):
 	
@@ -28,7 +26,7 @@ def send_mail (from_email_str, to_email_str, subject=None, message=None, html=No
 		          	"email": from_email_str
 		        }],
 		      	"subject": subject,
-	  			"cc": cc_emails,
+	  			# "cc": cc_emails,
 		    },
 	  	],
 	  	"from": {

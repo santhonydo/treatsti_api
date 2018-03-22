@@ -1,0 +1,7 @@
+brew install openssl
+brew link openssl
+brew install python
+brew link python
+brew install requests
+
+... might have to use force and overwrite.

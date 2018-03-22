@@ -11,8 +11,12 @@ stripe.api_key = "sk_test_gNQIsH7UWOchs63rkKfIPmxm"
 
 def create_charge(req):
 	try:
+		param = req.POST
+		amount = param.get('amount')
+		source = param.get('source')
+		description = param.get('description')
 		if amount > 0:
-			stripe.Charge.create(amount=req.amount, source=req.source, description=req.description, currency='usd')
+			stripe.Charge.create(amount=amount, source=source, description=description, currency='usd')
 			send_mail(
 				from_email_str='admin@treatsti.com', 
 				to_email_str='drphan@firstdoc.co', 
@@ -21,7 +25,7 @@ def create_charge(req):
 				subject='Payment charge created'
 			)
 			return HttpResponse(status=200)
-	except: 
+	except Exception as e: 
 		return HttpResponse(status=400)
 
 	return HttpResponse(status=400)
