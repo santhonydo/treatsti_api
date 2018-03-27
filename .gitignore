@@ -1,2 +1,6 @@
 treatsti_api/lib/*
 treatsti_api/.Python
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

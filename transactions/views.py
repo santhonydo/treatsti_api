@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from common.sendgrid_api import send_mail
 import stripe
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 # stripe.api_key = "sk_live_G0h2V0jwMQhp3SYNlpyX61A3"
 stripe.api_key = "sk_test_gNQIsH7UWOchs63rkKfIPmxm"
@@ -24,11 +25,11 @@ def create_charge(req):
 				message=description,
 				subject='Payment charge created'
 			)
-			return HttpResponse(status=200)
+			return JsonResponse({'message': 'success'}, status=200)
 	except Exception as e: 
-		return HttpResponse(status=400)
+		return JsonResponse({'message': 'failed in code', 'e': e}, status=400)
 
-	return HttpResponse(status=400)
+	return JsonResponse({'message': 'amount is zero'}, status=400)
 
 
 handlers = {
@@ -41,5 +42,5 @@ def index(request):
 	if handler:
 		return handler(request)
 	else: 
-		return HttpResponse(status=404)
+		return JsonResponse(status=404)
 
