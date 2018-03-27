@@ -27,7 +27,8 @@ def create_charge(req):
 			)
 			return JsonResponse({'message': 'success'}, status=200)
 	except Exception as e: 
-		return JsonResponse({'message': 'failed in code', 'e': e}, status=400)
+		print e
+		return JsonResponse({'message': 'failed in code'}, status=400)
 
 	return JsonResponse({'message': 'amount is zero'}, status=400)
 
